@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scroll_event/pdf_scroll_detection_page.dart';
+import 'package:scroll_event/pdf_short_content_test_page.dart';
+import 'package:scroll_event/pdf_scroll_issue_demo_page.dart';
 import 'package:scroll_event/inappwebview_scroll_detection_page.dart';
 import 'package:scroll_event/webview_flutter_scroll_detection_page.dart';
 
@@ -69,6 +71,34 @@ class MainMenuPage extends StatelessWidget {
             const SizedBox(height: 16),
             _buildMenuCard(
               context,
+              title: 'PDF 短いコンテンツテスト',
+              description: 'スクロール不要な短いコンテンツでの動作確認',
+              icon: Icons.description,
+              color: Colors.purple,
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const PdfShortContentTestPage(),
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+            _buildMenuCard(
+              context,
+              title: 'PDF スクロール問題デモ',
+              description: 'PdfPreviewのスクロール検知の問題点を確認',
+              icon: Icons.bug_report,
+              color: Colors.orange,
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const PdfScrollIssueDemoPage(),
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+            _buildMenuCard(
+              context,
               title: 'flutter_inappwebview',
               description: 'flutter_inappwebview パッケージでのスクロール検知',
               icon: Icons.web,
@@ -120,7 +150,7 @@ class MainMenuPage extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: color.withOpacity(0.1),
+                  color: color.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Icon(
